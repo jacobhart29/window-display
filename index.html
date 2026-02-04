@@ -39,7 +39,6 @@
       font-family: 'Orbitron', sans-serif;
     }
 
-    /* Glow effects */
     .text-glow {
       text-shadow: 0 0 20px hsla(25, 100%, 50%, 0.8),
                    0 0 40px hsla(25, 100%, 50%, 0.5),
@@ -51,7 +50,6 @@
                   0 0 60px hsla(25, 100%, 50%, 0.15);
     }
 
-    /* Glass card effect */
     .glass-card {
       background: linear-gradient(135deg, hsla(0, 0%, 10%, 0.8), hsla(0, 0%, 6%, 0.9));
       backdrop-filter: blur(20px);
@@ -63,7 +61,6 @@
       border: 1px solid hsla(25, 100%, 50%, 0.2);
     }
 
-    /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -75,7 +72,6 @@
       z-index: 20;
     }
 
-    /* Ambient effects */
     .ambient-glow {
       position: fixed;
       width: 24rem;
@@ -98,7 +94,6 @@
       background: hsla(25, 100%, 50%, 0.05);
     }
 
-    /* Header */
     header {
       display: flex;
       justify-content: flex-end;
@@ -137,7 +132,6 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Main content */
     main {
       flex: 1;
       display: flex;
@@ -147,7 +141,6 @@
       gap: 3rem;
     }
 
-    /* Time display */
     .time-display {
       text-align: center;
     }
@@ -198,7 +191,6 @@
       50% { opacity: 1; }
     }
 
-    /* Weather card */
     .weather-container {
       width: 100%;
       max-width: 48rem;
@@ -272,7 +264,6 @@
       margin-top: 0.5rem;
     }
 
-    /* Weather details grid */
     .weather-details {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -304,7 +295,6 @@
       color: var(--foreground);
     }
 
-    /* Footer */
     footer {
       text-align: center;
       margin-top: 2rem;
@@ -312,7 +302,6 @@
       color: var(--muted-foreground);
     }
 
-    /* Loading state */
     .loading-skeleton {
       background: var(--muted);
       border-radius: 0.5rem;
@@ -323,8 +312,6 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
-
-    /* Rain effect */
     .rain-container {
       position: fixed;
       inset: 0;
@@ -349,7 +336,6 @@
       100% { transform: translateY(100vh) translateX(20px); opacity: 0; }
     }
 
-    /* Snow effect */
     .snow-container {
       position: fixed;
       inset: 0;
@@ -366,7 +352,6 @@
       animation: rain-fall linear infinite;
     }
 
-    /* Icon colors */
     .icon-primary { color: var(--primary); }
     .icon-rain { color: var(--rain-color); }
     .icon-sun { color: var(--sun-color); }
@@ -375,16 +360,13 @@
   </style>
 </head>
 <body>
-  <!-- Ambient glow effects -->
   <div class="ambient-glow ambient-glow-1"></div>
   <div class="ambient-glow ambient-glow-2"></div>
 
-  <!-- Weather effects container -->
   <div id="rain-container" class="rain-container" style="display: none;"></div>
   <div id="snow-container" class="snow-container" style="display: none;"></div>
 
   <div class="container">
-    <!-- Header -->
     <header>
       <button class="refresh-btn glass-card" id="refresh-btn" aria-label="Refresh weather">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -394,9 +376,7 @@
       </button>
     </header>
 
-    <!-- Main content -->
     <main>
-      <!-- Time display -->
       <div class="time-display">
         <div class="time-row">
           <span class="font-display time-digit text-glow" id="hours">--</span>
@@ -409,13 +389,11 @@
         <p class="date-display" id="date">Loading...</p>
       </div>
 
-      <!-- Weather card -->
       <div class="weather-container">
         <div class="weather-card box-glow" id="weather-card">
           <div class="weather-main">
             <div class="weather-primary">
               <div id="weather-icon" class="weather-icon">
-                <!-- Icon will be inserted here -->
               </div>
               <div>
                 <div class="weather-temp">
@@ -476,14 +454,12 @@
       </div>
     </main>
 
-    <!-- Footer -->
     <footer>
-      <p>Weather data updates every 5 minutes • Powered by Open-Meteo</p>
+      <p></p>
     </footer>
   </div>
 
   <script>
-    // Configuration - Change your location here!
     const LOCATION = {
       name: "East Brunswick, NJ",
       latitude: 40.4286,
@@ -491,7 +467,6 @@
       timezone: "America/New_York"
     };
 
-    // Weather icons (SVG)
     const weatherIcons = {
       sun: `<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%">
         <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
@@ -513,7 +488,6 @@
       </svg>`
     };
 
-    // Get weather condition from code
     function getWeatherCondition(code) {
       if (code === 0) return { text: "Clear sky", icon: "sun" };
       if (code === 1) return { text: "Mainly clear", icon: "sun" };
@@ -531,7 +505,6 @@
       return { text: "Unknown", icon: "cloud" };
     }
 
-    // Update time display
     function updateTime() {
       const now = new Date();
       const options = {
@@ -561,7 +534,6 @@
       document.getElementById('date').textContent = now.toLocaleDateString('en-US', dateOptions);
     }
 
-    // Create rain effect
     function createRain(intensity = 60) {
       const container = document.getElementById('rain-container');
       container.innerHTML = '';
@@ -577,7 +549,6 @@
       }
     }
 
-    // Create snow effect
     function createSnow() {
       const container = document.getElementById('snow-container');
       container.innerHTML = '';
@@ -596,13 +567,11 @@
       }
     }
 
-    // Clear weather effects
     function clearWeatherEffects() {
       document.getElementById('rain-container').style.display = 'none';
       document.getElementById('snow-container').style.display = 'none';
     }
 
-    // Fetch weather data
     async function fetchWeather() {
       const btn = document.getElementById('refresh-btn');
       btn.classList.add('loading');
@@ -617,8 +586,7 @@
         const current = data.current;
         
         const condition = getWeatherCondition(current.weather_code);
-        
-        // Update DOM
+  
         document.getElementById('temp').textContent = Math.round(current.temperature_2m);
         document.getElementById('condition').textContent = condition.text;
         document.getElementById('feels-like').textContent = Math.round(current.apparent_temperature);
@@ -626,8 +594,7 @@
         document.getElementById('wind').textContent = Math.round(current.wind_speed_10m);
         document.getElementById('visibility').textContent = Math.round((current.visibility || 10000) / 1000);
         document.getElementById('weather-icon').innerHTML = weatherIcons[condition.icon];
-        
-        // Weather effects
+
         clearWeatherEffects();
         const conditionLower = condition.text.toLowerCase();
         if (conditionLower.includes('rain') || conditionLower.includes('drizzle') || conditionLower.includes('shower')) {
@@ -644,7 +611,6 @@
       }
     }
 
-    // Initialize
     updateTime();
     setInterval(updateTime, 1000);
     
