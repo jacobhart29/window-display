@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Clock - East Brunswick, NJ</title>
+  <title>Window Display</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -98,38 +98,6 @@
       display: flex;
       justify-content: flex-end;
       margin-bottom: 4rem;
-    }
-
-    .refresh-btn {
-      padding: 0.5rem;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .refresh-btn:hover {
-      background: hsla(25, 100%, 50%, 0.1);
-    }
-
-    .refresh-btn:hover svg {
-      color: var(--primary);
-    }
-
-    .refresh-btn svg {
-      width: 1.25rem;
-      height: 1.25rem;
-      color: var(--muted-foreground);
-      transition: color 0.3s;
-    }
-
-    .refresh-btn.loading svg {
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
     }
 
     main {
@@ -368,12 +336,7 @@
 
   <div class="container">
     <header>
-      <button class="refresh-btn glass-card" id="refresh-btn" aria-label="Refresh weather">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/>
-          <path d="M21 3v5h-5"/>
-        </svg>
-      </button>
+      <!-- Refresh button has been removed -->
     </header>
 
     <main>
@@ -573,9 +536,6 @@
     }
 
     async function fetchWeather() {
-      const btn = document.getElementById('refresh-btn');
-      btn.classList.add('loading');
-      
       try {
         const url = `https://api.open-meteo.com/v1/forecast?latitude=${LOCATION.latitude}&longitude=${LOCATION.longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,visibility&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto`;
         
@@ -606,8 +566,6 @@
       } catch (error) {
         console.error('Weather fetch error:', error);
         document.getElementById('condition').textContent = 'Failed to load';
-      } finally {
-        btn.classList.remove('loading');
       }
     }
 
@@ -616,8 +574,6 @@
     
     fetchWeather();
     setInterval(fetchWeather, 5 * 60 * 1000);
-    
-    document.getElementById('refresh-btn').addEventListener('click', fetchWeather);
   </script>
 </body>
 </html>
