@@ -493,7 +493,8 @@
         month: 'long',
         day: 'numeric'
       };
-      document.getElementById('date').textContent = now.toLocaleDateString('en-US', dateOptions);
+      document.getElementById('date').textContent =
+      now.toLocaleDateString('en-US', dateOptions) + " - B Day";
     }
 
     function createRain(intensity = 60) {
