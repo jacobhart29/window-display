@@ -205,7 +205,7 @@
               </div>
               <div class="detail-card glass-card">
                 <svg style="color: var(--muted-foreground)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                <div><p class="detail-label">Visibility</p><p class="detail-value font-display"><span id="visibility">--</span> km</p></div>
+                <div><p class="detail-label">Visibility</p><p class="detail-value font-display"><span id="visibility">--</span> miles</p></div>
               </div>
             </div>
           </div>
@@ -276,7 +276,10 @@
         document.getElementById('feels-like').textContent = Math.round(cur.apparent_temperature);
         document.getElementById('humidity').textContent = cur.relative_humidity_2m;
         document.getElementById('wind').textContent = Math.round(cur.wind_speed_10m);
-        document.getElementById('visibility').textContent = Math.round((cur.visibility || 10000) / 1000);
+        
+        const visibilityInKm = (cur.visibility || 10000) / 1000;
+        document.getElementById('visibility').textContent = Math.round(visibilityInKm * 0.621371);
+
         document.getElementById('weather-icon').innerHTML = icons[cond.i];
 
         document.getElementById('rain-container').style.display = 'none';
