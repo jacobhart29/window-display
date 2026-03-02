@@ -1,4 +1,4 @@
-my<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -22,11 +22,7 @@ my<!DOCTYPE html>
       --snow-color: hsl(200, 30%, 90%);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -36,9 +32,7 @@ my<!DOCTYPE html>
       overflow-x: hidden;
     }
 
-    .font-display {
-      font-family: 'Orbitron', sans-serif;
-    }
+    .font-display { font-family: 'Orbitron', sans-serif; }
 
     .text-glow {
       text-shadow: 0 0 20px hsla(25, 100%, 50%, 0.8),
@@ -60,6 +54,8 @@ my<!DOCTYPE html>
     .weather-card {
       background: linear-gradient(180deg, hsl(0, 0%, 8%), hsl(0, 0%, 5%));
       border: 1px solid hsla(25, 100%, 50%, 0.2);
+      border-radius: 1rem;
+      padding: 2rem;
     }
 
     .container {
@@ -83,23 +79,8 @@ my<!DOCTYPE html>
       z-index: 1;
     }
 
-    .ambient-glow-1 {
-      top: 0;
-      left: 25%;
-      background: hsla(25, 100%, 50%, 0.1);
-    }
-
-    .ambient-glow-2 {
-      bottom: 0;
-      right: 25%;
-      background: hsla(25, 100%, 50%, 0.05);
-    }
-
-    header {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 4rem;
-    }
+    .ambient-glow-1 { top: 0; left: 25%; background: hsla(25, 100%, 50%, 0.1); }
+    .ambient-glow-2 { bottom: 0; right: 25%; background: hsla(25, 100%, 50%, 0.05); }
 
     main {
       flex: 1;
@@ -110,9 +91,7 @@ my<!DOCTYPE html>
       gap: 3rem;
     }
 
-    .time-display {
-      text-align: center;
-    }
+    .time-display { text-align: center; }
 
     .time-row {
       display: flex;
@@ -121,31 +100,10 @@ my<!DOCTYPE html>
       gap: 0.5rem;
     }
 
-    .time-digit {
-      font-size: clamp(3rem, 10vw, 8rem);
-      font-weight: 700;
-      color: var(--primary);
-    }
-
-    .time-colon {
-      font-size: clamp(3rem, 10vw, 8rem);
-      font-weight: 700;
-      color: var(--primary);
-      animation: pulse-glow 2s ease-in-out infinite;
-    }
-
-    .time-seconds {
-      font-size: clamp(2rem, 6vw, 5rem);
-      font-weight: 700;
-      color: var(--muted-foreground);
-    }
-
-    .time-period {
-      font-size: clamp(1.5rem, 4vw, 3rem);
-      font-weight: 500;
-      color: hsla(25, 100%, 50%, 0.7);
-      margin-left: 0.5rem;
-    }
+    .time-digit { font-size: clamp(3rem, 10vw, 8rem); font-weight: 700; color: var(--primary); }
+    .time-colon { font-size: clamp(3rem, 10vw, 8rem); font-weight: 700; color: var(--primary); animation: pulse-glow 2s ease-in-out infinite; }
+    .time-seconds { font-size: clamp(2rem, 6vw, 5rem); font-weight: 700; color: var(--muted-foreground); }
+    .time-period { font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 500; color: hsla(25, 100%, 50%, 0.7); margin-left: 0.5rem; }
 
     .date-display {
       margin-top: 1rem;
@@ -155,170 +113,39 @@ my<!DOCTYPE html>
       letter-spacing: 0.1em;
     }
 
-    @keyframes pulse-glow {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
-    }
+    @keyframes pulse-glow { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
 
-    .weather-container {
-      width: 100%;
-      max-width: 48rem;
-    }
+    .weather-container { width: 100%; max-width: 48rem; }
+    .weather-main { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
 
-    .weather-card {
-      border-radius: 1rem;
-      padding: 2rem;
-    }
+    @media (min-width: 768px) { .weather-main { flex-direction: row; justify-content: space-between; } }
 
-    .weather-main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
+    .weather-primary { display: flex; align-items: center; gap: 1.5rem; }
+    .weather-icon { width: 5rem; height: 5rem; animation: float 3s ease-in-out infinite; }
 
-    @media (min-width: 768px) {
-      .weather-main {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-    .weather-primary {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
+    .weather-temp { display: flex; align-items: baseline; gap: 0.5rem; }
+    .temp-value { font-size: clamp(3rem, 8vw, 5rem); font-weight: 700; color: var(--foreground); }
+    .temp-unit { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--primary); }
+    .weather-condition { font-size: 1.25rem; color: var(--muted-foreground); text-transform: capitalize; margin-top: 0.25rem; }
+    .weather-location { font-size: 0.875rem; color: var(--primary); font-weight: 500; letter-spacing: 0.1em; margin-top: 0.5rem; }
 
-    .weather-icon {
-      width: 5rem;
-      height: 5rem;
-      animation: float 3s ease-in-out infinite;
-    }
+    .weather-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .detail-card { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; border-radius: 0.75rem; }
+    .detail-card svg { width: 1.25rem; height: 1.25rem; flex-shrink: 0; }
+    .detail-label { font-size: 0.75rem; color: var(--muted-foreground); }
+    .detail-value { font-size: 1.125rem; font-weight: 600; color: var(--foreground); }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+    .rain-container, .snow-container { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 10; }
+    .rain-drop { position: absolute; width: 2px; height: 32px; background: linear-gradient(to bottom, transparent, var(--rain-color), transparent); opacity: 0.4; animation: fall linear infinite; }
+    .snowflake { position: absolute; border-radius: 50%; background: var(--snow-color); opacity: 0.6; animation: fall linear infinite; }
 
-    .weather-temp {
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-    }
-
-    .temp-value {
-      font-size: clamp(3rem, 8vw, 5rem);
-      font-weight: 700;
-      color: var(--foreground);
-    }
-
-    .temp-unit {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--primary);
-    }
-
-    .weather-condition {
-      font-size: 1.25rem;
-      color: var(--muted-foreground);
-      text-transform: capitalize;
-      margin-top: 0.25rem;
-    }
-
-    .weather-location {
-      font-size: 0.875rem;
-      color: var(--primary);
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      margin-top: 0.5rem;
-    }
-
-    .weather-details {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .detail-card {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem;
-      border-radius: 0.75rem;
-    }
-
-    .detail-card svg {
-      width: 1.25rem;
-      height: 1.25rem;
-      flex-shrink: 0;
-    }
-
-    .detail-label {
-      font-size: 0.75rem;
-      color: var(--muted-foreground);
-    }
-
-    .detail-value {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: var(--foreground);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.75rem;
-      color: var(--muted-foreground);
-    }
-
-    .loading-skeleton {
-      background: var(--muted);
-      border-radius: 0.5rem;
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-    .rain-container {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 10;
-    }
-
-    .rain-drop {
-      position: absolute;
-      width: 2px;
-      height: 32px;
-      background: linear-gradient(to bottom, transparent, var(--rain-color), transparent);
-      opacity: 0.4;
-      animation: rain-fall linear infinite;
-    }
-
-    @keyframes rain-fall {
+    @keyframes fall {
       0% { transform: translateY(-100vh) translateX(0); opacity: 0; }
       10% { opacity: 0.4; }
       90% { opacity: 0.4; }
       100% { transform: translateY(100vh) translateX(20px); opacity: 0; }
-    }
-
-    .snow-container {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 10;
-    }
-
-    .snowflake {
-      position: absolute;
-      border-radius: 50%;
-      background: var(--snow-color);
-      opacity: 0.6;
-      animation: rain-fall linear infinite;
     }
 
     .icon-primary { color: var(--primary); }
@@ -336,9 +163,6 @@ my<!DOCTYPE html>
   <div id="snow-container" class="snow-container" style="display: none;"></div>
 
   <div class="container">
-    <header>
-    </header>
-
     <main>
       <div class="time-display">
         <div class="time-row">
@@ -353,228 +177,137 @@ my<!DOCTYPE html>
       </div>
 
       <div class="weather-container">
-        <div class="weather-card box-glow" id="weather-card">
+        <div class="weather-card box-glow">
           <div class="weather-main">
             <div class="weather-primary">
-              <div id="weather-icon" class="weather-icon">
-              </div>
+              <div id="weather-icon" class="weather-icon"></div>
               <div>
                 <div class="weather-temp">
                   <span class="font-display temp-value" id="temp">--</span>
                   <span class="font-display temp-unit">°F</span>
                 </div>
                 <p class="weather-condition" id="condition">Loading...</p>
-                <p class="weather-location font-display" id="location">East Brunswick, NJ</p>
+                <p class="weather-location font-display">East Brunswick, NJ</p>
               </div>
             </div>
-
             <div class="weather-details">
               <div class="detail-card glass-card">
-                <svg class="icon-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>
-                </svg>
-                <div>
-                  <p class="detail-label">Feels Like</p>
-                  <p class="detail-value font-display"><span id="feels-like">--</span>°F</p>
-                </div>
+                <svg class="icon-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+                <div><p class="detail-label">Feels Like</p><p class="detail-value font-display"><span id="feels-like">--</span>°F</p></div>
               </div>
-
               <div class="detail-card glass-card">
-                <svg class="icon-rain" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
-                </svg>
-                <div>
-                  <p class="detail-label">Humidity</p>
-                  <p class="detail-value font-display"><span id="humidity">--</span>%</p>
-                </div>
+                <svg class="icon-rain" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                <div><p class="detail-label">Humidity</p><p class="detail-value font-display"><span id="humidity">--</span>%</p></div>
               </div>
-
               <div class="detail-card glass-card">
-                <svg class="icon-cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/>
-                  <path d="M9.6 4.6A2 2 0 1 1 11 8H2"/>
-                  <path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
-                </svg>
-                <div>
-                  <p class="detail-label">Wind</p>
-                  <p class="detail-value font-display"><span id="wind">--</span> mph</p>
-                </div>
+                <svg class="icon-cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>
+                <div><p class="detail-label">Wind</p><p class="detail-value font-display"><span id="wind">--</span> mph</p></div>
               </div>
-
               <div class="detail-card glass-card">
-                <svg style="color: var(--muted-foreground)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-                  <circle cx="12" cy="12" r="3"/>
-                </svg>
-                <div>
-                  <p class="detail-label">Visibility</p>
-                  <p class="detail-value font-display"><span id="visibility">--</span> km</p>
-                </div>
+                <svg style="color: var(--muted-foreground)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                <div><p class="detail-label">Visibility</p><p class="detail-value font-display"><span id="visibility">--</span> miles</p></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </main>
-
-    <footer>
-      <p></p>
-    </footer>
   </div>
 
   <script>
-    const LOCATION = {
-      name: "East Brunswick, NJ",
-      latitude: 40.4286,
-      longitude: -74.4157,
-      timezone: "America/New_York"
+    const LOC = { name: "East Brunswick, NJ", lat: 40.4286, lon: -74.4157, tz: "America/New_York" };
+
+    function getDayType(date) {
+      const ref = new Date(2026, 1, 26);
+      const d = new Date(date);
+      const diff = Math.floor((d.setHours(0,0,0,0) - ref.setHours(0,0,0,0)) / 8.64e7);
+      return (diff % 2 === 0) ? "A Day" : "B Day";
+    }
+
+    const icons = {
+      sun: `<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
+      cloud: `<svg class="icon-cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>`,
+      rain: `<svg class="icon-rain" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M16 14v6"/><path d="M8 14v6"/><path d="M12 16v6"/></svg>`,
+      snow: `<svg class="icon-snow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M8 15h.01"/><path d="M8 19h.01"/><path d="M12 17h.01"/><path d="M12 21h.01"/><path d="M16 15h.01"/><path d="M16 19h.01"/></svg>`,
+      thunder: `<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%"><path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"/><path d="m13 12-3 5h4l-3 5"/></svg>`,
+      fog: `<svg class="icon-cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M16 17H7"/><path d="M17 21H9"/></svg>`
     };
 
-    const weatherIcons = {
-      sun: `<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%">
-        <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-      </svg>`,
-      cloud: `<svg class="icon-cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%">
-        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
-      </svg>`,
-      rain: `<svg class="icon-rain" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%">
-        <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M16 14v6"/><path d="M8 14v6"/><path d="M12 16v6"/>
-      </svg>`,
-      snow: `<svg class="icon-snow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%">
-        <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M8 15h.01"/><path d="M8 19h.01"/><path d="M12 17h.01"/><path d="M12 21h.01"/><path d="M16 15h.01"/><path d="M16 19h.01"/>
-      </svg>`,
-      thunder: `<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%">
-        <path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"/><path d="m13 12-3 5h4l-3 5"/>
-      </svg>`,
-      fog: `<svg class="icon-cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%">
-        <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M16 17H7"/><path d="M17 21H9"/>
-      </svg>`
-    };
-
-    function getWeatherCondition(code) {
-      if (code === 0) return { text: "Clear sky", icon: "sun" };
-      if (code === 1) return { text: "Mainly clear", icon: "sun" };
-      if (code === 2) return { text: "Partly cloudy", icon: "cloud" };
-      if (code === 3) return { text: "Overcast", icon: "cloud" };
-      if (code >= 45 && code <= 48) return { text: "Foggy", icon: "fog" };
-      if (code >= 51 && code <= 55) return { text: "Drizzle", icon: "rain" };
-      if (code >= 56 && code <= 57) return { text: "Freezing drizzle", icon: "rain" };
-      if (code >= 61 && code <= 65) return { text: "Rain", icon: "rain" };
-      if (code >= 66 && code <= 67) return { text: "Freezing rain", icon: "rain" };
-      if (code >= 71 && code <= 77) return { text: "Snow", icon: "snow" };
-      if (code >= 80 && code <= 82) return { text: "Rain showers", icon: "rain" };
-      if (code >= 85 && code <= 86) return { text: "Snow showers", icon: "snow" };
-      if (code >= 95 && code <= 99) return { text: "Thunderstorm", icon: "thunder" };
-      return { text: "Unknown", icon: "cloud" };
+    function getCond(c) {
+      if (c === 0 || c === 1) return { t: "Clear", i: "sun" };
+      if (c === 2 || c === 3) return { t: "Cloudy", i: "cloud" };
+      if (c >= 45 && c <= 48) return { t: "Foggy", i: "fog" };
+      if (c >= 51 && c <= 67 || c >= 80 && c <= 82) return { t: "Rain", i: "rain" };
+      if (c >= 71 && c <= 77 || c >= 85 && c <= 86) return { t: "Snow", i: "snow" };
+      if (c >= 95) return { t: "Storm", i: "thunder" };
+      return { t: "Cloudy", i: "cloud" };
     }
 
-    function updateTime() {
-      const now = new Date();
-      const options = {
-        timeZone: LOCATION.timezone,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true
-      };
-      
-      const timeStr = now.toLocaleTimeString('en-US', options);
-      const [time, period] = timeStr.split(' ');
-      const [hours, minutes, seconds] = time.split(':');
-      
-      document.getElementById('hours').textContent = hours;
-      document.getElementById('minutes').textContent = minutes;
-      document.getElementById('seconds').textContent = seconds;
-      document.getElementById('period').textContent = period;
-      
-      const dateOptions = {
-        timeZone: LOCATION.timezone,
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      };
-      document.getElementById('date').textContent =
-      now.toLocaleDateString('en-US', dateOptions) + " - A Day";
-    }
-
-    function createRain(intensity = 60) {
-      const container = document.getElementById('rain-container');
-      container.innerHTML = '';
-      container.style.display = 'block';
-      
-      for (let i = 0; i < intensity; i++) {
-        const drop = document.createElement('div');
-        drop.className = 'rain-drop';
-        drop.style.left = `${Math.random() * 100}%`;
-        drop.style.animationDelay = `${Math.random() * 2}s`;
-        drop.style.animationDuration = `${0.8 + Math.random() * 0.4}s`;
-        container.appendChild(drop);
-      }
-    }
-
-    function createSnow() {
-      const container = document.getElementById('snow-container');
-      container.innerHTML = '';
-      container.style.display = 'block';
-      
-      for (let i = 0; i < 50; i++) {
-        const flake = document.createElement('div');
-        flake.className = 'snowflake';
-        const size = 4 + Math.random() * 6;
-        flake.style.width = `${size}px`;
-        flake.style.height = `${size}px`;
-        flake.style.left = `${Math.random() * 100}%`;
-        flake.style.animationDelay = `${Math.random() * 3}s`;
-        flake.style.animationDuration = `${3 + Math.random() * 2}s`;
-        container.appendChild(flake);
-      }
-    }
-
-    function clearWeatherEffects() {
-      document.getElementById('rain-container').style.display = 'none';
-      document.getElementById('snow-container').style.display = 'none';
-    }
-
-    async function fetchWeather() {
+    async function update() {
+      let n;
       try {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${LOCATION.latitude}&longitude=${LOCATION.longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,visibility&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto`;
-        
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Failed to fetch weather');
-        
-        const data = await response.json();
-        const current = data.current;
-        
-        const condition = getWeatherCondition(current.weather_code);
-  
-        document.getElementById('temp').textContent = Math.round(current.temperature_2m);
-        document.getElementById('condition').textContent = condition.text;
-        document.getElementById('feels-like').textContent = Math.round(current.apparent_temperature);
-        document.getElementById('humidity').textContent = current.relative_humidity_2m;
-        document.getElementById('wind').textContent = Math.round(current.wind_speed_10m);
-        document.getElementById('visibility').textContent = Math.round((current.visibility || 10000) / 1000);
-        document.getElementById('weather-icon').innerHTML = weatherIcons[condition.icon];
+        const r = await fetch('https://worldtimeapi.org/api/timezone/' + LOC.tz);
+        const d = await r.json();
+        n = new Date(d.datetime);
+      } catch (e) { n = new Date(); }
 
-        clearWeatherEffects();
-        const conditionLower = condition.text.toLowerCase();
-        if (conditionLower.includes('rain') || conditionLower.includes('drizzle') || conditionLower.includes('shower')) {
-          createRain(conditionLower.includes('thunder') ? 100 : 60);
-        } else if (conditionLower.includes('snow') || conditionLower.includes('sleet')) {
-          createSnow();
-        }
-        
-      } catch (error) {
-        console.error('Weather fetch error:', error);
-        document.getElementById('condition').textContent = 'Failed to load';
-      }
+      const tStr = n.toLocaleTimeString('en-US', { timeZone: LOC.tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+      const [t, p] = tStr.split(' ');
+      const [h, m, s] = t.split(':');
+      
+      document.getElementById('hours').textContent = h;
+      document.getElementById('minutes').textContent = m;
+      document.getElementById('seconds').textContent = s;
+      document.getElementById('period').textContent = p;
+      
+      const dStr = n.toLocaleDateString('en-US', { timeZone: LOC.tz, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('date').textContent = dStr + " - " + getDayType(n);
     }
 
-    updateTime();
-    setInterval(updateTime, 1000);
-    
-    fetchWeather();
-    setInterval(fetchWeather, 5 * 60 * 1000);
+    async function weather() {
+      try {
+        const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${LOC.lat}&longitude=${LOC.lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,visibility&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto`);
+        const d = await r.json();
+        const cur = d.current;
+        const cond = getCond(cur.weather_code);
+
+        document.getElementById('temp').textContent = Math.round(cur.temperature_2m);
+        document.getElementById('condition').textContent = cond.t;
+        document.getElementById('feels-like').textContent = Math.round(cur.apparent_temperature);
+        document.getElementById('humidity').textContent = cur.relative_humidity_2m;
+        document.getElementById('wind').textContent = Math.round(cur.wind_speed_10m);
+        
+        const visibilityInKm = (cur.visibility || 10000) / 1000;
+        document.getElementById('visibility').textContent = Math.round(visibilityInKm * 0.621371);
+
+        document.getElementById('weather-icon').innerHTML = icons[cond.i];
+
+        document.getElementById('rain-container').style.display = 'none';
+        document.getElementById('snow-container').style.display = 'none';
+        if (cond.i === 'rain') {
+          const c = document.getElementById('rain-container');
+          c.innerHTML = ''; c.style.display = 'block';
+          for(let i=0; i<60; i++) {
+            const dr = document.createElement('div'); dr.className = 'rain-drop';
+            dr.style.left = Math.random()*100+'%'; dr.style.animationDelay = Math.random()*2+'s';
+            dr.style.animationDuration = 0.8+Math.random()*0.4+'s'; c.appendChild(dr);
+          }
+        } else if (cond.i === 'snow') {
+          const c = document.getElementById('snow-container');
+          c.innerHTML = ''; c.style.display = 'block';
+          for(let i=0; i<50; i++) {
+            const f = document.createElement('div'); f.className = 'snowflake';
+            const sz = 4+Math.random()*6; f.style.width = sz+'px'; f.style.height = sz+'px';
+            f.style.left = Math.random()*100+'%'; f.style.animationDelay = Math.random()*3+'s';
+            f.style.animationDuration = 3+Math.random()*2+'s'; c.appendChild(f);
+          }
+        }
+      } catch (e) {}
+    }
+
+    update(); weather();
+    setInterval(update, 1000);
+    setInterval(weather, 300000);
   </script>
 </body>
 </html>
