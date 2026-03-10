@@ -1,10 +1,14 @@
 const LOC = { name: "East Brunswick, NJ", lat: 40.4286, lon: -74.4157, tz: "America/New_York" };
 
 function getDayType(date) {
-  const ref = new Date(2026, 1, 26);
+  const ref = new Date(2026, 2, 10);
   const d = new Date(date);
-  const diff = Math.floor((d.setHours(0,0,0,0) - ref.setHours(0,0,0,0)) / 8.64e7);
-  return (diff % 2 === 0) ? "A Day" : "B Day";
+  
+  d.setHours(0, 0, 0, 0);
+  ref.setHours(0, 0, 0, 0);
+
+  const diffDays = Math.round((d - ref) / 86400000);
+  return (Math.abs(diffDays) % 2 === 0) ? "A Day" : "B Day";
 }
 
 const icons = {
