@@ -8,7 +8,7 @@ function getDayType(date) {
   ref.setHours(0, 0, 0, 0);
 
   const diffDays = Math.round((d - ref) / 86400000);
-  return (Math.abs(diffDays) % 2 === 0) ? "A Day" : "B Day";
+  return (Math.abs(diffDays) % 2 === 0) ? "A Day" : "A Day"; // Set to double A days for 3/19/26 and then double B day for 3/20/26 and then it will be reset to A - B so it keep track again.
 }
 
 const icons = {
@@ -33,7 +33,6 @@ function getCond(c) {
 async function update() {
   let n;
   try {
-    // Note: WorldTimeAPI can sometimes be unstable; fallback to local time if it fails
     const r = await fetch('https://worldtimeapi.org/api/timezone/' + LOC.tz);
     const d = await r.json();
     n = new Date(d.datetime);
@@ -110,7 +109,6 @@ async function weather() {
   }
 }
 
-// Initialize
 update(); 
 weather();
 
