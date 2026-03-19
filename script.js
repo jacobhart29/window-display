@@ -1,7 +1,7 @@
 const LOC = { name: "East Brunswick, NJ", lat: 40.4286, lon: -74.4157, tz: "America/New_York" };
 
 function getDayType(date) {
-  const ref = new Date(2026, 2, 10);
+  const ref = new Date(2026, 3, 19); // Update the current date because why not.
   const d = new Date(date);
   
   d.setHours(0, 0, 0, 0);
